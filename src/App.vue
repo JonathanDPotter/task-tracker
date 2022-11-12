@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div :class="prefersDarkMode ? 'main text-bg-dark' : 'main text-bg-light'">
+    <router-view></router-view>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Footer,
+  },
+
+  data() {
+    return {
+      prefersDarkMode: window.matchMedia("(prefers-color-scheme:dark)").matches,
+    };
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+a {
+  color: lightslategrey;
+
+  &:hover {
+    color: lightgrey;
+  }
+}
+
+h3,
+p {
+  user-select: none;
 }
 </style>

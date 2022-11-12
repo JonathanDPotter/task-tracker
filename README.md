@@ -1,24 +1,15 @@
-# vue-crash
+# Task Tracker
 
-## Project setup
-```
-npm install
-```
+Task Tracker is a very simple todo app, that I made as an introduction to Vue and Bootstrap. This is a modified version of the Traversy Media Vue Crash Course.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+---
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Technologies Used
 
-### Lints and fixes files
-```
-npm run lint
-```
+This app is written in JavaScript with Vue.js. I used Vuex for state management, Bootstrap and SCSS for styling, and JSON Server for prototyping a mock back-end.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+---
+
+## Functionality
+
+The user can see a list of saved tasks, add tasks, toggle a green highlight with a double-click of the task, and delete tasks. There is no login function as of now, so all users will see the same list of tasks.
