@@ -1,6 +1,6 @@
 # Task Tracker
 
-Task Tracker is a very simple todo app, that I made as an introduction to Vue and Bootstrap. This is a modified version of the Traversy Media Vue Crash Course.
+Task Tracker is a very simple todo app, that I made as an introduction to Vue and Bootstrap. This is a modified version of the Traversy Media [Vue Crash Course](https://youtu.be/qZXt1Aom3Cs).
 
 ---
 
