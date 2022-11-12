@@ -1,0 +1,27 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+a {
+  color: lightslategrey;
+
+  &:hover {
+    color: lightgrey;
+  }
+}
+
+h3,
+p {
+  -webkit-user-select: none;
+  user-select: none;
+}

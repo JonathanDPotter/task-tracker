@@ -1,7 +1,7 @@
 <template>
   <MainHeader title="Task Tracker" />
   <div class="container">
-    <AddTask v-show="this.$store.state.showAddTask" @add-task="addTask" />
+    <AddTask v-show="this.$store.state.showAddTask" />
     <AllTasks :tasks="this.$store.state.tasks" />
   </div>
 </template>

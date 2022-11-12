@@ -1,5 +1,5 @@
 <template>
-  <div v-for="task in this.$store.state.tasks" :key="task.id">
+  <div v-for="task in this.$store.state.tasks" :key="task._id">
     <Task :task="task" />
   </div>
 </template>

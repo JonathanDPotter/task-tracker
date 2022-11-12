@@ -16,47 +16,58 @@ const store = createStore({
     },
 
     // task CRUD actions
-    async addTask(state, task) {
-      const res = await api.addTask(task);
-      const data = await res.json();
-      state.tasks = [...state.tasks, data];
-      this.commit("toggleAddTask");
+    async addTask(_state, task) {
+      try {
+        await api.addTask(task);
+        this.commit("fetchTasks");
+        this.commit("toggleAddTask");
+      } catch (error) {
+        alert(error.message);
+        console.log(error);
+      }
     },
 
     async fetchTasks(state) {
-      const res = await api.fetchTasks();
-      const data = await res.json();
-      state.tasks = data;
+      try {
+        const res = await api.fetchTasks();
+        const data = await res.json();
+        state.tasks = data;
+      } catch (error) {
+        alert(error.message);
+        console.log(error);
+      }
     },
 
     async toggleReminder(state, id) {
-      const taskToToggle = await this.dispatch("fetchTask", id);
-      const updateTask = {
-        ...taskToToggle,
-        reminder: !taskToToggle.reminder,
-      };
-
-      const res = await api.toggleReminder(id, updateTask);
-      const data = await res.json();
-
-      state.tasks = state.tasks.map((task) =>
-        task.id === id ? { ...task, reminder: data.reminder } : task
-      );
+      try {
+        const taskToToggle = await this.dispatch("fetchTask", id);
+        const updateTask = {
+          ...taskToToggle,
+          reminder: !taskToToggle.reminder,
+        };
+        await api.toggleReminder(id, updateTask);
+        this.commit("fetchTasks");
+      } catch (error) {
+        alert(error.message);
+        console.log(error);
+      }
     },
 
     async deleteTask(state, id) {
       if (confirm("Are you sure?")) {
-        const res = await api.deleteTask(id);
-
-        res.status === 200
-          ? (state.tasks = state.tasks.filter((task) => task.id !== id))
-          : alert("Error deleting task.");
-        state.tasks = state.tasks.filter((task) => task.id !== id);
+        try {
+          await api.deleteTask(id);
+          this.commit("fetchTasks");
+        } catch (error) {
+          alert(error.message);
+          console.log(error);
+        }
       }
     },
   },
 
   actions: {
+    // fetches a single task
     async fetchTask(_state, id) {
       const res = await api.fetchTask(id);
       const data = await res.json();
