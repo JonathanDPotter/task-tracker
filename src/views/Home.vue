@@ -2,7 +2,13 @@
   <MainHeader title="Task Tracker" />
   <div class="container">
     <AddTask v-show="this.$store.state.showAddTask" />
-    <AllTasks :tasks="this.$store.state.tasks" />
+    <div
+      v-if="this.$store.state.tasks === null"
+      class="spinner-border text-danger"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+    <AllTasks v-else :tasks="this.$store.state.tasks" />
   </div>
 </template>
 

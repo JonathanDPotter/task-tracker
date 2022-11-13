@@ -5,7 +5,7 @@ const store = createStore({
   state() {
     return {
       showAddTask: false,
-      tasks: [],
+      tasks: null,
     };
   },
 
