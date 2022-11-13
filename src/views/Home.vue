@@ -4,9 +4,12 @@
     <AddTask v-show="this.$store.state.showAddTask" />
     <div
       v-if="this.$store.state.tasks === null"
-      class="spinner-border text-danger"
+      class="w-100 d-flex align-items-center"
     >
-      <span class="sr-only">Loading...</span>
+      <div class="spinner-border text-danger mx-5">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <span class="waiting">Waiting for database</span>
     </div>
     <AllTasks v-else :tasks="this.$store.state.tasks" />
   </div>

@@ -38,3 +38,23 @@ p {
 p.indented {
   text-indent: 1rem;
 }
+
+.waiting {
+  width: 50%;
+  &:after {
+    animation: ellipsis 1s infinite;
+    content: "";
+  }
+
+  @keyframes ellipsis {
+    25% {
+      content: ".";
+    }
+    50% {
+      content: "..";
+    }
+    75% {
+      content: "...";
+    }
+  }
+}
