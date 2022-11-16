@@ -10,16 +10,20 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
   name: "MyButton",
   props: {
     color: String,
     text: String,
   },
-  methods: {
-    onClick() {
-      this.$store.commit("toggleAddTask");
-    },
+  setup() {
+    const store = useStore();
+    const onClick = () => {
+      store.commit("toggleAddTask");
+    };
+    return { onClick };
   },
 };
 </script>

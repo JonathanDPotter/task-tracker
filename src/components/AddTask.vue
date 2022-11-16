@@ -33,38 +33,40 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
 export default {
   name: "AddTask",
+  setup() {
+    const text = ref("");
+    const day = ref("");
+    const reminder = ref(false);
 
-  data() {
-    return {
-      text: "",
-      day: "",
-      reminder: false,
-    };
-  },
+    const store = useStore();
 
-  methods: {
-    onSubmit(event) {
+    const onSubmit = (event) => {
       event.preventDefault();
 
-      if (!this.text) {
+      if (!text.value) {
         alert("Please add a task.");
         return;
       }
 
       const newTask = {
-        text: this.text,
-        day: this.day,
-        reminder: this.reminder,
+        text: text.value,
+        day: day.value,
+        reminder: reminder.value,
       };
 
-      this.$store.commit("addTask", newTask);
+      store.commit("addTask", newTask);
 
-      this.text = "";
-      this.day = "";
-      this.reminder = false;
-    },
+      text.value = "";
+      day.value = "";
+      reminder.value = false;
+    };
+
+    return { text, day, reminder, onSubmit };
   },
 };
 </script>

@@ -19,6 +19,8 @@
 import MainHeader from "../components/MainHeader.vue";
 import AllTasks from "../components/AllTasks.vue";
 import AddTask from "../components/AddTask.vue";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
 export default {
   name: "Home",
@@ -27,9 +29,12 @@ export default {
     AllTasks,
     AddTask,
   },
+  setup() {
+    const store = useStore();
 
-  async created() {
-    this.$store.commit("fetchTasks");
+    onMounted(async () => {
+      store.commit("fetchTasks");
+    });
   },
 };
 </script>
